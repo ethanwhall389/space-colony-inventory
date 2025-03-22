@@ -1,5 +1,16 @@
 const asyncHandler = require("express-async-handler");
 
-exports.getAllCategories = async (req, res) => {
-  res.render("all-categories", { title: "All categories" });
+const getAllCategories = async (req, res) => {
+  res.render("./pages/all-categories", { title: "All categories" });
+};
+
+const getCategoryById = async (req, res) => {
+  res.render("./pages/category", {
+    title: `Category Id: ${req.params.categoryId}`,
+  });
+};
+
+module.exports = {
+  getAllCategories,
+  getCategoryById,
 };
