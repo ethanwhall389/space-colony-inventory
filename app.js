@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTES
 app.use("/", indexRouter);
+app.use("/categories", categoryRouter);
+app.use("/items", itemRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
