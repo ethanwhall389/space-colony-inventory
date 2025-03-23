@@ -6,6 +6,18 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1>Orbital Outfitters</h1>
+    <h2>Inventory Manager</h2>
+    <form action="/items?:search" method="GET">
+      <input
+        name="search"
+        id="search"
+        type="text"
+        placeholder="Search inventory"
+      />
+      <button>Search</button>
+    </form>
+    <a href="/items"><button>View all inventory</button></a>
+    <a href="/categories"><button>View all categories</button></a>
   </body>
 </html>
