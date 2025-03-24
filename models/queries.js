@@ -51,6 +51,18 @@ async function insertItem(item) {
     return id;
 }
 
+async function updateItem(item, itemId) {
+    const query = {
+        text: `
+            UPDATE Items
+            SET name = $1, description = $2, price = $3, stock = $4,
+            WHERE item_id = $5;
+        `,
+        values: [item.name, item.description, item.price, item.stock, itemId],
+    }
+    await pool.query(query);
+}
+
 async function getAllCategories() {
     const query = {
         text: 'SELECT * FROM categories',
@@ -107,6 +119,17 @@ async function insertRelationItemCategory(itemId, categoryId) {
     await pool.query(query);
 }
 
+async function removeRelationItemCategory(itemId) {
+    const query = {
+        text: `
+            DELETE FROM Items_Categories
+            WHERE item_id = $1;
+        `,
+        values: [itemId],
+    }
+    await pool.query(query);
+}
+
 module.exports = {
     getAllItems,
     getItemById,
@@ -117,4 +140,5 @@ module.exports = {
     getCategoriesByItem,
     insertCategory,
     insertRelationItemCategory,
+    removeRelationItemCategory,
 }

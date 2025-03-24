@@ -31,11 +31,23 @@ const postNewItem = async (req, res) => {
 }
 
 const updateItemGet = async (req, res) => {
-  res.render('./pages/update-item', {title: 'Update item'});
+  const itemId = req.params.itemId;
+  const item = await queries.getItemById(itemId);
+  const categories = await queries.getAllCategories();
+  res.render('./pages/update-item', {title: 'Update item', item: item, categories: categories});
 }
 
 const updateItemPost = async (req, res) => {
   console.log(req.body);
+  const itemId = req.params.itemId;
+  await queries.updateItem(req.body, itemId);
+  await queries.removeRelationItemCategory(itemId);
+  req.body.categories.forEach(async (catId) => {
+    await queries.insertRelationItemCategory(itemId, catId);
+  })
+  //update row based on item id
+  //delete all relations that are using item id
+    //add new relations
   res.redirect('/items');
 }
 
