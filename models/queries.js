@@ -85,6 +85,17 @@ async function getCategoriesByItem(itemId) {
     return rows;
 }
 
+async function insertCategory(category) {
+    const query = {
+        text: `
+            INSERT INTO Categories ("name", "description_heading", "description")
+            VALUES ($1, $2, $3);
+        `,
+        values: [category.name, category.descriptionHeading, category.description],
+    }
+    await pool.query(query);
+}
+
 async function insertRelationItemCategory(itemId, categoryId) {
     const query = {
         text: `
@@ -104,5 +115,6 @@ module.exports = {
     getAllCategories,
     getCategoryById,
     getCategoriesByItem,
+    insertCategory,
     insertRelationItemCategory,
 }

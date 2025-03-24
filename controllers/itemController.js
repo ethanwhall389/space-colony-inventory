@@ -27,8 +27,6 @@ const postNewItem = async (req, res) => {
   req.body.categories.forEach(async (catId) => {
     await queries.insertRelationItemCategory(itemId, catId);
   })
-  //add new item (name, desc, price, stock) - have the query return the id for the new item 
-  //Add rows to junction table for each checkbox id using checkbox id and new item id
   res.redirect('/items');
 }
 

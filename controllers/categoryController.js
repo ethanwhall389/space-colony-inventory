@@ -23,6 +23,7 @@ const getNewCategory = async (req, res) => {
 
 const postNewCategory = async (req, res) => {
   console.log(req.body);
+  await queries.insertCategory(req.body);
   res.redirect('/categories');
 }
 
