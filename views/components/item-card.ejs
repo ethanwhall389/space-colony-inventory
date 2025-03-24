@@ -1,0 +1,12 @@
+<a href="/items/<%=item.item_id%>">
+    <div class="card item-card">
+        <h1><%= item.name %></h1>
+        <% if (item.price) { %>
+            <p>Price: <%= item.price %></p>
+        <% } %>
+        <% if (item.stock) { %>
+            <p>Stock: <%= item.stock %></p>
+        <% } %>
+    </div>
+</a>
+

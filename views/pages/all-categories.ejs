@@ -12,7 +12,7 @@
     <% if (locals.categories) { %>
     <ul>
       <% categories.forEach((category) => { %>
-      <li><%= category.name %></li>
+        <%- include('../components/category-card', {category: category}); %>
       <% }) %>
     </ul>
     <% } else { %>

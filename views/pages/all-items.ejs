@@ -9,10 +9,10 @@
   <body>
     <h1><%= title %></h1>
     <a href="/items/new"><button>Add item to inventory</button></a>
-    <% if (locals.items) { %> <% console.log('items!') %>
+    <% if (locals.items) { %>
     <ul>
       <% items.forEach((item) => { %>
-      <li><%= item.name %></li>
+      <%- include('../components/item-card', {item: item}); %>
       <% }) %>
     </ul>
     <% } else { %>

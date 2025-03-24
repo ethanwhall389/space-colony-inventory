@@ -7,9 +7,13 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
     <% if (locals.category) { %>
-      <h2>category.name</h2>
+      <h2><%= category.name %></h2>
+      <p><%= category.description_heading %></p>
+      <p>Description: <%= category.description %></p>
+      <% items.forEach((item) => { %>
+        <%- include('../components/item-card', {item: item}) %>
+      <% }) %>
       <% } else { %>
       <h2>This category does not exist</h2>
       <% } %>
