@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/categories/new" method="POST">
+        <ul>
+            <li>
+                <label for="name">Category name</label>
+                <input type="text" name="name" id="name">
+            </li>
+            <li>
+                <label for="description">Category description</label>
+                <textarea name="description" id="description"></textarea>
+            </li>
+        </ul>
+        <button type="submit">Add new category</button>
+    </form>
+  </body>
+</html>

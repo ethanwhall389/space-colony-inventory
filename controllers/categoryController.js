@@ -10,7 +10,18 @@ const getCategoryById = async (req, res) => {
   });
 };
 
+const getNewCategory = async (req, res) => {
+  res.render('./pages/new-category', {title: 'Add new category'});
+}
+
+const postNewCategory = async (req, res) => {
+  console.log(req.body);
+  res.redirect('/categories');
+}
+
 module.exports = {
   getAllCategories,
   getCategoryById,
+  getNewCategory,
+  postNewCategory,
 };

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/items/new" method="POST">
+        <ul>
+            <li>
+                <label for="name">Item name</label>
+                <input type="text" name="name" id="name">
+            </li>
+            <li>
+                <label for="description">Item description</label>
+                <textarea name="description" id="description"></textarea>
+            </li>
+            <li>
+                <label for="price">Item price</label>
+                <input type="number" name="price" id="price">
+            </li>
+            <li>
+                <label for="stock">Initial stock</label>
+                <input type="number" name="stock" id="stock">
+            </li>
+            <h3>Categories</h3>
+            <label for="category01">category01</label>
+            <input type="checkbox" name="category01">
+            <label for="category02">category02</label>
+            <input type="checkbox" name="category02">
+        </ul>
+        <button type="submit">Add item to inventory</button>
+    </form>
+  </body>
+</html>
