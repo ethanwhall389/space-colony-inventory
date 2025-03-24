@@ -27,10 +27,10 @@
                 <input type="number" name="stock" id="stock">
             </li>
             <h3>Categories</h3>
-            <label for="category01">category01</label>
-            <input type="checkbox" name="category01">
-            <label for="category02">category02</label>
-            <input type="checkbox" name="category02">
+            <% locals.categories.forEach((cat) => { %>
+              <label for="categories[<%= cat.category_id %>]"><%= cat.name %></label>
+              <input type="checkbox" name="categories[<%= cat.category_id %>]" value="<%= cat.category_id %>">
+            <% }) %>
         </ul>
         <button type="submit">Add item to inventory</button>
     </form>

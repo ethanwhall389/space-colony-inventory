@@ -16,11 +16,19 @@ const getItemById = async (req, res) => {
 };
 
 const getNewItem = async (req, res) => {
-  res.render('./pages/new-item', {title: 'Add new item to inventory'});
+  const categories = await queries.getAllCategories();
+  res.render('./pages/new-item', {title: 'Add new item to inventory', categories: categories});
 }
 
 const postNewItem = async (req, res) => {
   console.log(req.body);
+  const result = await queries.insertItem(req.body);
+  const itemId = result.item_id;
+  req.body.categories.forEach(async (catId) => {
+    await queries.insertRelationItemCategory(itemId, catId);
+  })
+  //add new item (name, desc, price, stock) - have the query return the id for the new item 
+  //Add rows to junction table for each checkbox id using checkbox id and new item id
   res.redirect('/items');
 }
 

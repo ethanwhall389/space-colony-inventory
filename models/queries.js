@@ -36,6 +36,21 @@ async function getItemsByCategory(categoryId) {
     return rows;
 }
 
+async function insertItem(item) {
+    const query = {
+        text: `
+        INSERT INTO Items ("name", "description", "price", "stock")
+        VALUES ($1, $2, $3, $4)
+        RETURNING item_id;
+        `,
+        values: [item.name, item.description, item.price, item.stock],
+    }
+    const {rows} = await pool.query(query);
+    const id = rows[0];
+    console.log(id);
+    return id;
+}
+
 async function getAllCategories() {
     const query = {
         text: 'SELECT * FROM categories',
@@ -70,11 +85,24 @@ async function getCategoriesByItem(itemId) {
     return rows;
 }
 
+async function insertRelationItemCategory(itemId, categoryId) {
+    const query = {
+        text: `
+            INSERT INTO Items_Categories (item_id, category_id)
+            VALUES ($1, $2);
+        `,
+        values: [itemId, categoryId],
+    }
+    await pool.query(query);
+}
+
 module.exports = {
     getAllItems,
     getItemById,
     getItemsByCategory,
+    insertItem,
     getAllCategories,
     getCategoryById,
     getCategoriesByItem,
+    insertRelationItemCategory,
 }
