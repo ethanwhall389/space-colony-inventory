@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css">
     <title><%= title %></title>
   </head>
   <body>
     <h1><%= title %></h1>
+    <% if (locals.category) { %>
+      <h2>category.name</h2>
+      <% } else { %>
+      <h2>This category does not exist</h2>
+      <% } %>
   </body>
 </html>
