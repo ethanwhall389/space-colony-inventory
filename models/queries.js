@@ -52,10 +52,11 @@ async function insertItem(item) {
 }
 
 async function updateItem(item, itemId) {
+  console.log("updateItem");
   const query = {
     text: `
             UPDATE Items
-            SET name = $1, description = $2, price = $3, stock = $4,
+            SET name = $1, description = $2, price = $3, stock = $4
             WHERE item_id = $5;
         `,
     values: [item.name, item.description, item.price, item.stock, itemId],
@@ -125,6 +126,7 @@ async function insertCategory(category) {
 }
 
 async function insertRelationItemCategory(itemId, categoryId) {
+  console.log("insertRelationItemCategory");
   const query = {
     text: `
             INSERT INTO Items_Categories (item_id, category_id)
@@ -136,6 +138,7 @@ async function insertRelationItemCategory(itemId, categoryId) {
 }
 
 async function removeRelationItemCategory(itemId) {
+  console.log("removeRelationItem");
   const query = {
     text: `
             DELETE FROM Items_Categories
@@ -151,6 +154,7 @@ module.exports = {
   getItemById,
   getItemsByCategory,
   insertItem,
+  updateItem,
   getAllCategories,
   getCategoryById,
   getCategoriesByItem,

@@ -32,9 +32,11 @@ const postNewItem = async (req, res) => {
   console.log(req.body);
   const result = await queries.insertItem(req.body);
   const itemId = result.item_id;
-  req.body.categories.forEach(async (catId) => {
-    await queries.insertRelationItemCategory(itemId, catId);
-  });
+  const categories = req.body.categories;
+  if (categories)
+    categories.forEach(async (catId) => {
+      await queries.insertRelationItemCategory(itemId, catId);
+    });
   res.redirect("/items");
 };
 

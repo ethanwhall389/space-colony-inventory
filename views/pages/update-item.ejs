@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <form action="/<% item.id %>/update" method="POST">
+    <form action="/items/<%= item.item_id %>/update" method="POST">
       <ul>
         <li>
           <label for="name">Item name</label>
@@ -45,7 +45,7 @@
         <input type="checkbox" name="categories[<%= cat.category_id %>]"
         value="<%= cat.category_id %>" <% if (categoryIds.includes(cat.category_id)) { %> checked <%} %> > <% }) %>
       </ul>
-      <button type="submit">Add item to inventory</button>
+      <button type="submit">Update item</button>
     </form>
   </body>
 </html>
