@@ -7,7 +7,7 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1>Update <%= item.name %></h1>
     <form action="/items/<%= item.item_id %>/update" method="POST">
       <ul>
         <li>
@@ -45,7 +45,7 @@
         <input type="checkbox" name="categories[<%= cat.category_id %>]"
         value="<%= cat.category_id %>" <% if (categoryIds.includes(cat.category_id)) { %> checked <%} %> > <% }) %>
       </ul>
-      <button type="submit">Update item</button>
+      <button type="submit">Update <%= item.name %></button>
     </form>
   </body>
 </html>

@@ -125,6 +125,23 @@ async function insertCategory(category) {
   await pool.query(query);
 }
 
+async function updateCategory(category, categoryId) {
+  const query = {
+    text: `
+              UPDATE Categories
+              SET name = $1, description_heading = $2, description = $3
+              WHERE category_id = $4;
+          `,
+    values: [
+      category.name,
+      category.descriptionHeading,
+      category.description,
+      categoryId,
+    ],
+  };
+  await pool.query(query);
+}
+
 async function insertRelationItemCategory(itemId, categoryId) {
   console.log("insertRelationItemCategory");
   const query = {
@@ -160,6 +177,7 @@ module.exports = {
   getCategoriesByItem,
   getCategoryIdsByItem,
   insertCategory,
+  updateCategory,
   insertRelationItemCategory,
   removeRelationItemCategory,
 };
