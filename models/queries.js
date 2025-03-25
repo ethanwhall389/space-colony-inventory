@@ -2,7 +2,10 @@ const pool = require("./pool");
 
 async function getAllItems() {
   const query = {
-    text: "SELECT * FROM items",
+    text: `
+        SELECT * FROM items
+        ORDER BY name;
+    `,
   };
   const { rows } = await pool.query(query);
   return rows;
@@ -66,7 +69,10 @@ async function updateItem(item, itemId) {
 
 async function getAllCategories() {
   const query = {
-    text: "SELECT * FROM categories",
+    text: `
+        SELECT * FROM categories
+        ORDER BY name;
+    `,
   };
   const { rows } = await pool.query(query);
   return rows;
