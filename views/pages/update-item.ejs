@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/main.css" />
     <title><%= title %></title>
   </head>
   <body>
@@ -11,29 +11,41 @@
     <form action="/<% item.id %>/update" method="POST">
       <ul>
         <li>
-            <label for="name">Item name</label>
-            <input type="text" name="name" id="name" value="<%= item.name %>">
+          <label for="name">Item name</label>
+          <input type="text" name="name" id="name" value="<%= item.name %>" />
         </li>
         <li>
-            <label for="description">Item description</label>
-            <textarea name="description" id="description" value="<%= item.description %>"></textarea>
+          <label for="description">Item description</label>
+          <textarea name="description" id="description">
+<%= item.description %></textarea
+          >
         </li>
         <li>
-            <label for="price">Item price</label>
-            <input type="number" name="price" id="price" value="<%= item.price %>">
-            <% console.log(item.price.toString()) %>
+          <label for="price">Item price</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            value="<%= item.price %>"
+          />
+          <% console.log(item.price.toString()) %>
         </li>
         <li>
-            <label for="stock">Initial stock</label>
-            <input type="number" name="stock" id="stock" value="<%= item.stock %>">
+          <label for="stock">Initial stock</label>
+          <input
+            type="number"
+            name="stock"
+            id="stock"
+            value="<%= item.stock %>"
+          />
         </li>
         <h3>Categories</h3>
-        <% locals.categories.forEach((cat) => { %>
-          <label for="categories[<%= cat.category_id %>]"><%= cat.name %></label>
-          <input type="checkbox" name="categories[<%= cat.category_id %>]" value="<%= cat.category_id %> >
-        <% }) %>
-    </ul>
-        <button type="submit">Add item to inventory</button>
+        <% locals.allCategories.forEach((cat) => { %>
+        <label for="categories[<%= cat.category_id %>]"><%= cat.name %></label>
+        <input type="checkbox" name="categories[<%= cat.category_id %>]"
+        value="<%= cat.category_id %>" <% if (categoryIds.includes(cat.category_id)) { %> checked <%} %> > <% }) %>
+      </ul>
+      <button type="submit">Add item to inventory</button>
     </form>
   </body>
 </html>

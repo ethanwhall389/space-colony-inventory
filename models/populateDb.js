@@ -2,15 +2,15 @@
 //   database for multiple developers when they join the project, or for resetting the
 //   database during development for dev, testing, or other purposes.
 
-require('dotenv').config(); // Load env variables
-const {Client} = require('pg');
+require("dotenv").config(); // Load env variables
+const { Client } = require("pg");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS Items (
     item_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "name" VARCHAR (255),
     "description" TEXT,
-    "price"  MONEY,
+    "price"  NUMERIC (12,2),
     "stock" SMALLINT,
     "added" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -61,15 +61,15 @@ VALUES
 `;
 
 async function main() {
-    console.log('seeding...');
-    const client = new Client({
-        connectionString: process.env.DATABASE_URL,
-        client_encoding: 'UTF8'
-    });
-    await client.connect();
-    await client.query(SQL);
-    await client.end();
-    console.log('done seeding');
+  console.log("seeding...");
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    client_encoding: "UTF8",
+  });
+  await client.connect();
+  await client.query(SQL);
+  await client.end();
+  console.log("done seeding");
 }
 
 main();
