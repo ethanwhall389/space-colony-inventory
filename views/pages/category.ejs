@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/main.css">
-    <title><%= title %></title>
-  </head>
-  <body>
-    <% if (locals.category) { %>
-      <h2><%= category.name %></h2>
-      <p><%= category.description_heading %></p>
-      <p>Description: <%= category.description %></p>
-      <% items.forEach((item) => { %>
-        <%- include('../components/item-card', {item: item}) %>
-      <% }) %>
-      <% } else { %>
-      <h2>This category does not exist</h2>
-      <% } %>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/main.css">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <% if (locals.category) { %>
+  <h2><%= category.name %></h2>
+  <p><%= category.description_heading %></p>
+  <p>Description: <%= category.description %></p>
+  <% items.forEach((item) => { %>
+  <%- include('../components/item-card', {item: item}) %>
+  <% }) %>
+  <% } else { %>
+  <h2>This category does not exist</h2>
+  <% } %>
+  <a href="/categories/<%= category.category_id %>/update"><button>Edit</button></a>
+  <form action="/categories/<%= category.category_id %>/delete" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+</body>
+
 </html>
