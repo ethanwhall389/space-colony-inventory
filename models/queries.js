@@ -67,6 +67,17 @@ async function updateItem(item, itemId) {
   await pool.query(query);
 }
 
+async function deleteItem(itemId) {
+  const query = {
+    text: `
+      DELETE FROM Items
+      WHERE item_id = $1;
+    `,
+    values: [itemId],
+  };
+  await pool.query(query);
+}
+
 async function getAllCategories() {
   const query = {
     text: `
@@ -178,6 +189,7 @@ module.exports = {
   getItemsByCategory,
   insertItem,
   updateItem,
+  deleteItem,
   getAllCategories,
   getCategoryById,
   getCategoriesByItem,

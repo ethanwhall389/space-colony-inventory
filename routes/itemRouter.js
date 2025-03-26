@@ -5,11 +5,13 @@ const itemRouter = Router();
 
 itemRouter.get("/", itemController.getAllItems);
 
-itemRouter.get('/new', itemController.getNewItem);
-itemRouter.post('/new', itemController.postNewItem);
+itemRouter.get("/new", itemController.getNewItem);
+itemRouter.post("/new", itemController.postNewItem);
 
-itemRouter.get('/:itemId/update', itemController.updateItemGet);
-itemRouter.post('/:itemId/update', itemController.updateItemPost);
+itemRouter.get("/:itemId/update", itemController.updateItemGet);
+itemRouter.post("/:itemId/update", itemController.updateItemPost);
+
+itemRouter.post("/:itemId/delete", itemController.deleteItemPost);
 
 itemRouter.get("/:itemId", itemController.getItemById);
 

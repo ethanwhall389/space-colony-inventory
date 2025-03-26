@@ -70,6 +70,13 @@ const updateItemPost = async (req, res) => {
   res.redirect("/items");
 };
 
+const deleteItemPost = async (req, res) => {
+  console.log(req.body);
+  const itemId = req.params.itemId;
+  await queries.deleteItem(itemId);
+  res.redirect("/items");
+};
+
 module.exports = {
   getAllItems,
   getItemById,
@@ -77,4 +84,5 @@ module.exports = {
   postNewItem,
   updateItemGet,
   updateItemPost,
+  deleteItemPost,
 };
