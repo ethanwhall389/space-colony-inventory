@@ -11,6 +11,18 @@ async function getAllItems() {
   return rows;
 }
 
+async function searchItemsByName(name) {
+  const query = {
+    text: `
+      SELECT * FROM items
+        WHERE LOWER(name) LIKE LOWER('%' || $1 || '%');
+    `,
+    values: [name],
+  };
+  const { rows } = await pool.query(query);
+  return rows;
+}
+
 async function getItemById(id) {
   const query = {
     text: "SELECT * FROM items WHERE item_id=$1",
@@ -212,6 +224,7 @@ async function removeRelationItemCategory(itemId) {
 
 module.exports = {
   getAllItems,
+  searchItemsByName,
   getItemById,
   getItemsByCategory,
   insertItem,

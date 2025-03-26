@@ -3,6 +3,8 @@ const itemController = require("../controllers/itemController");
 
 const itemRouter = Router();
 
+// itemRouter.get("?search", (req, res) => console.log("search req"));
+// itemRouter.get("/", (req, res) => console.log(req.query));
 itemRouter.get("/", itemController.getAllItems);
 
 itemRouter.get("/new", itemController.getNewItem);

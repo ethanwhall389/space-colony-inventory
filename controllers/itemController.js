@@ -3,8 +3,16 @@ const { format } = require("date-fns");
 const queries = require("../models/queries");
 
 const getAllItems = async (req, res) => {
+  if (req.query.search) return searchItems(req.query, res);
   const items = await queries.getAllItems();
   res.render("./pages/all-items", { title: "All items", items: items });
+};
+
+const searchItems = async (query, res) => {
+  const items = await queries.searchItemsByName(query.search);
+  console.log(query);
+  console.log(items);
+  res.render("./pages/all-items", { title: "Items", items: items });
 };
 
 const getItemById = async (req, res) => {
