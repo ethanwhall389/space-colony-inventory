@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     background-color: rgb(46, 48, 69);
     color: white;
@@ -8,6 +12,7 @@ html {
 h1, h2, h3, p, span {
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 a {
@@ -18,4 +23,52 @@ a {
 .card {
     border: 2px solid black;
     padding: 15px;
+}
+
+button {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+  background-color: #F082AC;
+}
+
+input {
+    padding: 5px 12px;
+    margin: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 2px solid #e1e4e8;
+    border-radius: 6px;
+    outline: none;
+}:focus{
+    border-color: #EA4C89;
+    outline: none;
 }

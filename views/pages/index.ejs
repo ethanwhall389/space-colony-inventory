@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/main.css">
-    <title><%= title %></title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/pages.css">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <div>
     <h1>Orbital Outfitters</h1>
     <h2>Inventory Manager</h2>
-    <form action="/items?:search" method="GET">
-      <input
-        name="search"
-        id="search"
-        type="text"
-        placeholder="Search inventory"
-      />
-      <button>Search</button>
-    </form>
+  </div>
+  <form action="/items?:search" method="GET">
+    <input name="search" id="search" type="text" placeholder="Search inventory" />
+    <button>Search</button>
+  </form>
+  <div>
     <a href="/items"><button>View all inventory</button></a>
     <a href="/categories"><button>View all categories</button></a>
+  </div>
+  <div>
     <a href="/items/new"><button>Add item to inventory</button></a>
     <a href="/categories/new"><button>Add new category</button></a>
-  </body>
+  </div>
+</body>
+
 </html>
