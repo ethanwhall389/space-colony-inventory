@@ -159,6 +159,33 @@ async function updateCategory(category, categoryId) {
   await pool.query(query);
 }
 
+async function deleteCategory(categoryId) {
+  await pool.query("BEGIN");
+  try {
+    const deleteCategoryQuery = {
+      text: `
+        DELETE FROM categories
+        WHERE category_id = $1;
+      `,
+      values: [categoryId],
+    };
+
+    const deleteRelationsQuery = {
+      text: `
+        DELETE FROM items_categories
+        WHERE category_id = $1;
+      `,
+      values: [categoryId],
+    };
+
+    await pool.query(deleteCategoryQuery);
+    await pool.query(deleteRelationsQuery);
+  } catch (err) {
+    await pool.query("ROLLBACK");
+    throw err;
+  }
+}
+
 async function insertRelationItemCategory(itemId, categoryId) {
   console.log("insertRelationItemCategory");
   const query = {
@@ -196,6 +223,7 @@ module.exports = {
   getCategoryIdsByItem,
   insertCategory,
   updateCategory,
+  deleteCategory,
   insertRelationItemCategory,
   removeRelationItemCategory,
 };
