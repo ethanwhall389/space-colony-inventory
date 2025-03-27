@@ -9,7 +9,7 @@ const getAllItems = async (req, res) => {
 };
 
 const searchItems = async (query, res) => {
-  const items = await queries.searchItemsByName(query.search);
+  const items = await queries.searchItems(query.search);
   console.log(query);
   console.log(items);
   res.render("./pages/all-items", { title: "Items", items: items });

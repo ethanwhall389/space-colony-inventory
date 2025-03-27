@@ -11,13 +11,15 @@ async function getAllItems() {
   return rows;
 }
 
-async function searchItemsByName(name) {
+async function searchItems(search) {
   const query = {
     text: `
       SELECT * FROM items
-        WHERE LOWER(name) LIKE LOWER('%' || $1 || '%');
+        WHERE LOWER(name) LIKE LOWER('%' || $1 || '%')
+          OR CAST(item_id AS TEXT) LIKE $1
+        ORDER BY name DESC;
     `,
-    values: [name],
+    values: [search],
   };
   const { rows } = await pool.query(query);
   return rows;
@@ -224,7 +226,7 @@ async function removeRelationItemCategory(itemId) {
 
 module.exports = {
   getAllItems,
-  searchItemsByName,
+  searchItems,
   getItemById,
   getItemsByCategory,
   insertItem,
