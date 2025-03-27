@@ -1,0 +1,22 @@
+.card {
+    width: 100%;
+    /* max-width: 600px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: start;
+    transition: all;
+    transition-duration: 100ms;
+}
+
+.card h2, .card p {
+    text-align: left;
+}
+
+.card:hover {
+    background-color: #EA4C89;
+    /* border: 2px solid #EA4C89; */
+}
