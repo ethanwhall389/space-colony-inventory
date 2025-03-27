@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/main.css" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1>Update <%= item.name %></h1>
-    <form action="/items/<%= item.item_id %>/update" method="POST">
-      <ul>
-        <li>
-          <label for="name">Item name</label>
-          <input type="text" name="name" id="name" value="<%= item.name %>" />
-        </li>
-        <li>
-          <label for="description">Item description</label>
-          <textarea name="description" id="description">
-<%= item.description %></textarea
-          >
-        </li>
-        <li>
-          <label for="price">Item price</label>
-          <input
-            type="number"
-            name="price"
-            id="price"
-            value="<%= item.price %>"
-          />
-          <% console.log(item.price.toString()) %>
-        </li>
-        <li>
-          <label for="stock">Initial stock</label>
-          <input
-            type="number"
-            name="stock"
-            id="stock"
-            value="<%= item.stock %>"
-          />
-        </li>
-        <h3>Categories</h3>
-        <% locals.allCategories.forEach((cat) => { %>
-        <label for="categories[<%= cat.category_id %>]"><%= cat.name %></label>
-        <input type="checkbox" name="categories[<%= cat.category_id %>]"
-        value="<%= cat.category_id %>" <% if (categoryIds.includes(cat.category_id)) { %> checked <%} %> > <% }) %>
-      </ul>
-      <button type="submit">Update <%= item.name %></button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/main.css" />
+  <link rel="stylesheet" href="/pages.css">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <h1>Update <%= item.name %></h1>
+  <form action="/items/<%= item.item_id %>/update" method="POST">
+    <ul>
+      <li>
+        <label for="name">Item name</label>
+        <input type="text" name="name" id="name" value="<%= item.name %>" />
+      </li>
+      <li>
+        <label for="description">Item description</label>
+        <textarea name="description" id="description">
+<%= item.description %></textarea>
+      </li>
+      <li>
+        <label for="price">Item price</label>
+        <input type="number" name="price" id="price" value="<%= item.price %>" />
+        <% console.log(item.price.toString()) %>
+      </li>
+      <li>
+        <label for="stock">Initial stock</label>
+        <input type="number" name="stock" id="stock" value="<%= item.stock %>" />
+      </li>
+      <h3>Categories</h3>
+      <% locals.allCategories.forEach((cat) => { %>
+      <label for="categories[<%= cat.category_id %>]"><%= cat.name %></label>
+      <input type="checkbox" name="categories[<%= cat.category_id %>]" value="<%= cat.category_id %>" <% if (categoryIds.includes(cat.category_id)) { %> checked <%} %>> <% }) %>
+    </ul>
+    <button type="submit">Update <%= item.name %></button>
+  </form>
+</body>
+
 </html>

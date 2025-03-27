@@ -12,7 +12,12 @@
     transition-duration: 100ms;
 }
 
+.category-card {
+    flex-direction: column;
+}
+
 .card h2, .card p {
+    width: 100%;
     text-align: left;
 }
 

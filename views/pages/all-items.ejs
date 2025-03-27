@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/main.css">
-    <title><%= title %></title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/pages.css">
+  <title><%= title %></title>
+</head>
+
+<body class="all-items">
+  <div class="header">
     <h1><%= title %></h1>
     <a href="/items/new"><button>Add item to inventory</button></a>
-    <% if (locals.items) { %>
-    <ul>
-      <% items.forEach((item) => { %>
-      <%- include('../components/item-card', {item: item}); %>
-      <% }) %>
-    </ul>
-    <% } else { %>
-    <h2>No items in your inventory</h2>
-    <% } %>
-  </body>
+  </div>
+  <% if (locals.items) { %>
+  <div class="items-cont">
+    <% items.forEach((item) => { %>
+    <%- include('../components/item-card', {item: item}); %>
+    <% }) %>
+  </div>
+  <% } else { %>
+  <h2>No items in your inventory</h2>
+  <% } %>
+</body>
+
 </html>
